@@ -1,0 +1,46 @@
+<idea-plugin>
+  <id>com.aiunng.prj.idea.plugin.string.convert</id>
+  <name>String-Convert</name>
+  <version>2021.10.21</version>
+  <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/rk1kp4">w*Yu</vendor>
+
+  <description><![CDATA[
+     <br>
+      <p><font size="6">String-Convert helps you develop faster.</font></p>
+      <p><font size="5">How to use:</font></p>
+      <ul>
+        <li>Menu bar:tools -> String-Convert</li>
+        <li>Shortcuts:[win]ctrl + shift + S , [mac]command + shift + S</li>
+      </ul>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      <p><font size="5">2021.10.21</font></p>
+        <ul>
+          <li>[NEW]Create Table</li>
+          <li>[NEW]Alter Table</li>
+        </ul>
+      <em></em>
+    ]]>
+  </change-notes>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+  <idea-version since-build="162.0"/>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="sql-generate.start" class="com.aiunng.prj.StartTask" text="String Convert" description="字符串转换">
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift S"/>
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+  </actions>
+
+</idea-plugin>
