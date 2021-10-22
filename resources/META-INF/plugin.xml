@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.aiunng.prj.idea.plugin.string.convert</id>
   <name>String-Convert</name>
-  <version>2021.10.22</version>
+  <version>2021.10.23</version>
   <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/hrgdyx">w*Yu</vendor>
 
   <description><![CDATA[
@@ -10,6 +10,7 @@
       <p><font size="5">How to use:</font></p>
       <ul>
         <li>Menu bar:tools -> String Convert</li>
+        <li>Tool bar: String Convert</li>
       </ul>
       <ul>
         <li>First, in the text input area, enter the string to be processed.</li>
@@ -24,6 +25,7 @@
       <p><font size="5">如何使用：</font></p>
       <ul>
         <li>菜单栏：tools -> String Convert</li>
+        <li>工具栏：点击'String Convert'图标</li>
       </ul>
       <ul>
         <li>首先，在文本输入区，输入要处理的字符串。</li>
@@ -34,12 +36,14 @@
         <li>最后点击转换按钮'->'，展示处理结果。</li>
       </ul>
       <p><font size="5">使用界面：</font></p>
-      <img src="https://plugins.jetbrains.com/files/17857/screenshot_430bb147-03dc-4658-af38-a0e22c924c05" width="360"/>
+      <img src="https://plugins.jetbrains.com/files/17857/screenshot_b959cda9-bbef-4348-866d-bd9cf86b88c3" width="360"/>
       <br>
+      <img src="https://plugins.jetbrains.com/files/17857/screenshot_0e107588-0c03-4a0e-9141-3a278682f137" width="360"/>
+
     ]]></description>
 
   <change-notes><![CDATA[
-      <p><font size="5">2021.10.22</font></p>
+      <p><font size="5">2021.10.23</font></p>
         <ul>
           <li>[NEW]string split</li>
           <li>[NEW]string replace separator</li>
@@ -67,6 +71,12 @@
     <!-- Add your actions here -->
     <action id="string-convert.start" class="com.aiunng.prj.StartTask" text="String Convert" description="字符串转换">
       <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+    <action id="string-convert.toolbar.start"
+      class="com.aiunng.prj.StartTask"
+      text="String Convert"
+      description="String Convert" icon="/file/文本16.png">
+      <add-to-group group-id="ToolbarRunGroup" anchor="after" relative-to-action="Stop"/>
     </action>
   </actions>
 
