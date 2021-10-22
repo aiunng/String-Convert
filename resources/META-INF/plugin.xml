@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.aiunng.prj.idea.plugin.string.convert</id>
   <name>String-Convert</name>
-  <version>2021.10.21</version>
+  <version>2021.10.22</version>
   <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/hrgdyx">w*Yu</vendor>
 
   <description><![CDATA[
@@ -34,12 +34,12 @@
         <li>最后点击转换按钮'->'，展示处理结果。</li>
       </ul>
       <p><font size="5">使用界面：</font></p>
-      <img src="" width="360"/>
+      <img src="https://plugins.jetbrains.com/files/17857/screenshot_430bb147-03dc-4658-af38-a0e22c924c05" width="360"/>
       <br>
     ]]></description>
 
   <change-notes><![CDATA[
-      <p><font size="5">2021.10.21</font></p>
+      <p><font size="5">2021.10.22</font></p>
         <ul>
           <li>[NEW]string split</li>
           <li>[NEW]string replace separator</li>
