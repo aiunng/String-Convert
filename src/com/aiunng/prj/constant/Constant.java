@@ -34,7 +34,7 @@ public class Constant {
   public static final String TOMO_TEXT_DATE_CONVERT = "<html><a href='" + DATE_CONVERT_LINK + "'>Date-Convert</a></html>";
   public static final String SQL_GENER_LINK = "https://plugins.jetbrains.com/plugin/17263-sql-generate";
   public static final String TOMO_TEXT_SQL_GENER = "<html><a href='" + SQL_GENER_LINK + "'>SQL-Generate</a></html>";
-  public static final String STRING_CONVERT_LINK = "https://plugins.jetbrains.com/plugin/";
+  public static final String STRING_CONVERT_LINK = "https://plugins.jetbrains.com/plugin/17857-string-convert";
   public static final String TOMO_TEXT_STRING_CONVERT = "<html><a href='" + STRING_CONVERT_LINK + "'>String-Convert</a></html>";
 
 }
