@@ -2,23 +2,51 @@
   <id>com.aiunng.prj.idea.plugin.string.convert</id>
   <name>String-Convert</name>
   <version>2021.10.21</version>
-  <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/rk1kp4">w*Yu</vendor>
+  <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/hrgdyx">w*Yu</vendor>
 
   <description><![CDATA[
      <br>
       <p><font size="6">String-Convert helps you develop faster.</font></p>
       <p><font size="5">How to use:</font></p>
       <ul>
-        <li>Menu bar:tools -> String-Convert</li>
-        <li>Shortcuts:[win]ctrl + shift + S , [mac]command + shift + S</li>
+        <li>Menu bar:tools -> String Convert</li>
       </ul>
+      <ul>
+        <li>First, in the text input area, enter the string to be processed.</li>
+        <li>Then, you can split them by 'origSplit' according to the characteristics of the text.</li>
+        <li>You can also replace the original splitter with 'newSplit'.</li>
+        <li>You can fill in the start and end characters of the split text element with 'startChar' and 'endChar'.</li>
+        <li>The text can be encoded and decoded (url, base64).</li>
+        <li>Finally the conversion button '->' is clicked to show the processing result..</li>
+      </ul>
+
+      <br>
+      <p><font size="5">如何使用：</font></p>
+      <ul>
+        <li>菜单栏：tools -> String Convert</li>
+      </ul>
+      <ul>
+        <li>首先，在文本输入区，输入要处理的字符串。</li>
+        <li>然后，你可以根据文本的特点，通过'原分隔符'来分割文本。</li>
+        <li>你也可以用'新分隔符'替换原来的分割符。</li>
+        <li>可以通过'开始符号'和'结束符号'将分割后的文本元素进行开始和结束字符填充。</li>
+        <li>文本可以被编码和解码（支持url, base64)。</li>
+        <li>最后点击转换按钮'->'，展示处理结果。</li>
+      </ul>
+      <p><font size="5">使用界面：</font></p>
+      <img src="" width="360"/>
+      <br>
     ]]></description>
 
   <change-notes><![CDATA[
       <p><font size="5">2021.10.21</font></p>
         <ul>
-          <li>[NEW]Create Table</li>
-          <li>[NEW]Alter Table</li>
+          <li>[NEW]string split</li>
+          <li>[NEW]string replace separator</li>
+          <li>[NEW]add item start char</li>
+          <li>[NEW]add item end char</li>
+          <li>[NEW]url encode,url decode</li>
+          <li>[NEW]base64 encode,base64 decode</li>
         </ul>
       <em></em>
     ]]>
@@ -37,8 +65,7 @@
 
   <actions>
     <!-- Add your actions here -->
-    <action id="sql-generate.start" class="com.aiunng.prj.StartTask" text="String Convert" description="字符串转换">
-      <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift S"/>
+    <action id="string-convert.start" class="com.aiunng.prj.StartTask" text="String Convert" description="字符串转换">
       <add-to-group group-id="ToolsMenu" anchor="last"/>
     </action>
   </actions>

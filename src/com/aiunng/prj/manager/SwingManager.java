@@ -4,10 +4,16 @@ import static com.aiunng.prj.constant.Constant.ADVER;
 import static com.aiunng.prj.constant.Constant.AUTHOR;
 import static com.aiunng.prj.constant.Constant.BLOG_LINK;
 import static com.aiunng.prj.constant.Constant.BLOG_TEXT;
+import static com.aiunng.prj.constant.Constant.DATE_CONVERT_LINK;
 import static com.aiunng.prj.constant.Constant.ICON_URL;
+import static com.aiunng.prj.constant.Constant.SPLIT;
+import static com.aiunng.prj.constant.Constant.SQL_GENER_LINK;
 import static com.aiunng.prj.constant.Constant.TEXT_BOLD;
 import static com.aiunng.prj.constant.Constant.TEXT_NORMAL;
 import static com.aiunng.prj.constant.Constant.TEXT_SMALL;
+import static com.aiunng.prj.constant.Constant.TOMO;
+import static com.aiunng.prj.constant.Constant.TOMO_TEXT_DATE_CONVERT;
+import static com.aiunng.prj.constant.Constant.TOMO_TEXT_SQL_GENER;
 import static com.aiunng.prj.constant.Constant.VERSION;
 import static com.aiunng.prj.constant.ConverCodeStrategyEnum.getByDesc;
 import static com.aiunng.prj.util.SwingUtil.addConvertTypeComboBox;
@@ -16,7 +22,6 @@ import static com.aiunng.prj.util.SwingUtil.addJButton;
 import static com.aiunng.prj.util.SwingUtil.addJTextArea;
 import static com.aiunng.prj.util.SwingUtil.addLabel;
 
-import com.aiunng.prj.constant.ConverCodeStrategyEnum;
 import com.aiunng.prj.entity.FormatCommand;
 import com.aiunng.prj.util.SmartFormatUtil;
 import com.intellij.ui.components.JBScrollPane;
@@ -58,7 +63,7 @@ public class SwingManager {
     contentPane.add(contentPanel, BorderLayout.CENTER);
     contentPanel.setLayout(null);
     int ctrlX = 30;
-    int ctrlY = 20;
+    int ctrlY = 15;
     int ctrlWidth = 60;
     int ctrlHeight = 25;
     int ctrlXOffSet = 130;
@@ -80,9 +85,9 @@ public class SwingManager {
     JTextArea closeCtrl = addJTextArea(null, TEXT_SMALL, ctrlX + ctrlXOffSetL2, ctrlY + ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
 
     ctrlX = ctrlX + ctrlXOffSet;
-    addLabel("转码类型：", TEXT_SMALL, ctrlX, ctrlY+ ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
+    addLabel("转码类型：", TEXT_SMALL, ctrlX, ctrlY + ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
     ctrlX = ctrlX + ctrlXOffSetL2;
-    JComboBox convertCtrl = addConvertTypeComboBox(TEXT_SMALL, ctrlX, ctrlY+ ctrlYOffSet, ctrlWidth + 40, ctrlHeight + 6, contentPanel);
+    JComboBox convertCtrl = addConvertTypeComboBox(TEXT_SMALL, ctrlX, ctrlY + ctrlYOffSet, ctrlWidth + 40, ctrlHeight + 6, contentPanel);
 
     // 输入区
     JTextArea inputView = addJTextArea("\n\n  请输入待处理文本...", TEXT_SMALL, 30, 80, 300, 510, contentPanel);
@@ -136,7 +141,7 @@ public class SwingManager {
     cfgButton.addActionListener(e -> {
       JDialog jDialog = new JDialog();
       jDialog.setTitle("help");
-      jDialog.setBounds(610, 310, 220, 180);
+      jDialog.setBounds(610, 310, 225, 250);
       jDialog.setVisible(true);
       jDialog.setLayout(null);
       // 禁止用户调整窗口大小
@@ -191,11 +196,64 @@ public class SwingManager {
       authorLabel.setBounds(70, y1, 100, 25);
       authorLabel.setFont(TEXT_BOLD);
 
+      y1 = y1 + offset1 + 10;
+      JLabel splitLabel = new JLabel(SPLIT);
+      splitLabel.setBounds(0, y1, 300, 5);
+      splitLabel.setFont(TEXT_BOLD);
+
+      y1 = y1 + 10 ;
+      JLabel tomoLabel = new JLabel(TOMO);
+      tomoLabel.setBounds(10, y1, 100, 25);
+      tomoLabel.setFont(TEXT_BOLD);
+
+      y1 = y1 + offset1;
+      JLabel dateConvertLink = new JLabel(TOMO_TEXT_DATE_CONVERT);
+      // 光标类型
+      dateConvertLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
+      dateConvertLink.setBounds(20, y1, 80, 25);
+      dateConvertLink.setFont(TEXT_BOLD);
+
+      // 鼠标监听
+      dateConvertLink.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+          try {
+            //打开网址
+            Desktop.getDesktop().browse(new URI(DATE_CONVERT_LINK));
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
+        }
+      });
+
+      JLabel sqlGenerLink = new JLabel(TOMO_TEXT_SQL_GENER);
+      // 光标类型
+      sqlGenerLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
+      sqlGenerLink.setBounds(100, y1, 80, 25);
+      sqlGenerLink.setFont(TEXT_BOLD);
+
+      // 鼠标监听
+      sqlGenerLink.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+          try {
+            //打开网址
+            Desktop.getDesktop().browse(new URI(SQL_GENER_LINK));
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
+        }
+      });
+
       contentPane.add(imgLabel);
       contentPane.add(versionLabel);
       contentPane.add(textLabel);
       contentPane.add(linklabel);
       contentPane.add(authorLabel);
+      contentPane.add(splitLabel);
+      contentPane.add(tomoLabel);
+      contentPane.add(dateConvertLink);
+      contentPane.add(sqlGenerLink);
     });
   }
 

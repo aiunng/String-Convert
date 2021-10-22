@@ -101,7 +101,6 @@ public class SwingUtil {
     comboBox.setFont(font);
     comboBox.setBounds(x, y, width, height);
     comboBox.setSelectedIndex(0);
-    comboBox.setEditable(true);
     contentPanel.add(comboBox);
 
     return comboBox;
