@@ -53,6 +53,10 @@ public class SwingUtil {
     textArea.setFont(font);
     textArea.setBounds(x, y, width, height);
     textArea.setText(text);
+    //激活自动换行功能
+    textArea.setLineWrap(true);
+    // 激活断行不断字功能
+    textArea.setWrapStyleWord(true);
     contentPanel.add(textArea);
     return textArea;
   }
