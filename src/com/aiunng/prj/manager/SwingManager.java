@@ -16,12 +16,16 @@ import static com.aiunng.prj.constant.Constant.TOMO_TEXT_DATE_CONVERT;
 import static com.aiunng.prj.constant.Constant.TOMO_TEXT_SQL_GENER;
 import static com.aiunng.prj.constant.Constant.VERSION;
 import static com.aiunng.prj.constant.ConverCodeStrategyEnum.getByDesc;
+import static com.aiunng.prj.constant.CountStrategyEnum.getCountByDesc;
 import static com.aiunng.prj.util.SwingUtil.addConvertTypeComboBox;
+import static com.aiunng.prj.util.SwingUtil.addCountTypeComboBox;
 import static com.aiunng.prj.util.SwingUtil.addJBScrollPane;
 import static com.aiunng.prj.util.SwingUtil.addJButton;
 import static com.aiunng.prj.util.SwingUtil.addJTextArea;
 import static com.aiunng.prj.util.SwingUtil.addLabel;
 
+import com.aiunng.prj.constant.ConverCodeStrategyEnum;
+import com.aiunng.prj.constant.CountStrategyEnum;
 import com.aiunng.prj.entity.FormatCommand;
 import com.aiunng.prj.util.SmartFormatUtil;
 import com.intellij.ui.components.JBScrollPane;
@@ -71,23 +75,27 @@ public class SwingManager {
     int ctrlXOffSetL2 = 55;
 
     // 控制区
-    addLabel("原分隔符：", TEXT_SMALL, ctrlX, ctrlY, ctrlWidth, ctrlHeight, contentPanel);
+    addLabel("原字符：", TEXT_SMALL, ctrlX, ctrlY, ctrlWidth, ctrlHeight, contentPanel);
     JTextArea origSplitCtrl = addJTextArea(null, TEXT_SMALL, ctrlX + ctrlXOffSetL2, ctrlY, ctrlWidth, ctrlHeight, contentPanel);
 
-    addLabel("新分隔符：", TEXT_SMALL, ctrlX, ctrlY + ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
+    addLabel("新字符：", TEXT_SMALL, ctrlX, ctrlY + ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
     JTextArea newSplitCtrl = addJTextArea(null, TEXT_SMALL, ctrlX + ctrlXOffSetL2, ctrlY + ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
 
     ctrlX = ctrlX + ctrlXOffSet;
-    addLabel("开始符号：", TEXT_SMALL, ctrlX, ctrlY, ctrlWidth, ctrlHeight, contentPanel);
+    addLabel("前缀：", TEXT_SMALL, ctrlX, ctrlY, ctrlWidth, ctrlHeight, contentPanel);
     JTextArea openCtrl = addJTextArea(null, TEXT_SMALL, ctrlX + ctrlXOffSetL2, ctrlY, ctrlWidth, ctrlHeight, contentPanel);
 
-    addLabel("结束符号：", TEXT_SMALL, ctrlX, ctrlY + ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
+    addLabel("后缀：", TEXT_SMALL, ctrlX, ctrlY + ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
     JTextArea closeCtrl = addJTextArea(null, TEXT_SMALL, ctrlX + ctrlXOffSetL2, ctrlY + ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
 
     ctrlX = ctrlX + ctrlXOffSet;
+    addLabel("计数：", TEXT_SMALL, ctrlX, ctrlY, ctrlWidth, ctrlHeight, contentPanel);
+    JTextArea countStr = addJTextArea(null, TEXT_SMALL, ctrlX + 35, ctrlY, ctrlWidth - 10, ctrlHeight, contentPanel);
+    JComboBox countCtrl = addCountTypeComboBox(TEXT_SMALL, ctrlX + 30 + ctrlXOffSetL2, ctrlY, ctrlWidth + 10, ctrlHeight + 6, contentPanel);
+
     addLabel("转码类型：", TEXT_SMALL, ctrlX, ctrlY + ctrlYOffSet, ctrlWidth, ctrlHeight, contentPanel);
-    ctrlX = ctrlX + ctrlXOffSetL2;
-    JComboBox convertCtrl = addConvertTypeComboBox(TEXT_SMALL, ctrlX, ctrlY + ctrlYOffSet, ctrlWidth + 40, ctrlHeight + 6, contentPanel);
+    JComboBox convertCtrl = addConvertTypeComboBox(TEXT_SMALL, ctrlX + ctrlXOffSetL2, ctrlY + ctrlYOffSet, ctrlWidth + 40, ctrlHeight + 6,
+        contentPanel);
 
     // 输入区
     JTextArea inputView = addJTextArea("\n\n  请输入待处理文本...", TEXT_SMALL, 30, 80, 300, 510, contentPanel);
@@ -109,9 +117,24 @@ public class SwingManager {
       formatCommand.setNewSplit(newSplitCtrl.getText());
       formatCommand.setOpen(openCtrl.getText());
       formatCommand.setClose(closeCtrl.getText());
-      formatCommand.setConverCodeStrategy(getByDesc(convertCtrl.getSelectedItem().toString()));
+      formatCommand.setCountStr(countStr.getText());
+
+      // 计数和转码不可以同时选择
+      ConverCodeStrategyEnum codeStrategy = getByDesc(convertCtrl.getSelectedItem().toString());
+      CountStrategyEnum countStrategy = getCountByDesc(countCtrl.getSelectedItem().toString());
+      formatCommand.setConverCodeStrategy(codeStrategy);
+      formatCommand.setCountStrategy(countStrategy);
+
       // 执行处理
-      String splitResult = SmartFormatUtil.splitFormat(formatCommand);
+      String splitResult;
+      // 处理计数
+      if (!CountStrategyEnum.NONE.equals(countStrategy)) {
+        int count = SmartFormatUtil.calcCount(formatCommand);
+        splitResult = String.valueOf(count);
+      } else {
+        // 处理字符串转换
+        splitResult = SmartFormatUtil.splitFormat(formatCommand);
+      }
       // 设置处理后的文本
       answer.setText(splitResult);
     });
@@ -201,7 +224,7 @@ public class SwingManager {
       splitLabel.setBounds(0, y1, 300, 5);
       splitLabel.setFont(TEXT_BOLD);
 
-      y1 = y1 + 10 ;
+      y1 = y1 + 10;
       JLabel tomoLabel = new JLabel(TOMO);
       tomoLabel.setBounds(10, y1, 100, 25);
       tomoLabel.setFont(TEXT_BOLD);

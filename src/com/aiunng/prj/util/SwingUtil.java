@@ -1,6 +1,7 @@
 package com.aiunng.prj.util;
 
 import com.aiunng.prj.constant.ConverCodeStrategyEnum;
+import com.aiunng.prj.constant.CountStrategyEnum;
 import com.intellij.ui.components.JBScrollPane;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -99,6 +100,23 @@ public class SwingUtil {
 
     // 绑定下拉框选项
    for (ConverCodeStrategyEnum value : ConverCodeStrategyEnum.values()) {
+      comboBox.addItem(value.getDesc());
+    }
+
+    comboBox.setFont(font);
+    comboBox.setBounds(x, y, width, height);
+    comboBox.setSelectedIndex(0);
+    contentPanel.add(comboBox);
+
+    return comboBox;
+  }
+
+  public static JComboBox addCountTypeComboBox(Font font, int x, int y, int width, int height, JPanel contentPanel) {
+    // 创建下拉框
+    JComboBox comboBox = new JComboBox();
+
+    // 绑定下拉框选项
+    for (CountStrategyEnum value : CountStrategyEnum.values()) {
       comboBox.addItem(value.getDesc());
     }
 

@@ -5,6 +5,7 @@ import static com.aiunng.prj.constant.ConverCodeStrategyEnum.URL_ENCODE;
 
 import cn.hutool.core.util.StrUtil;
 import com.aiunng.prj.constant.ConverCodeStrategyEnum;
+import com.aiunng.prj.constant.CountStrategyEnum;
 import com.aiunng.prj.entity.FormatCommand;
 
 /**
@@ -54,6 +55,16 @@ public class SmartFormatUtil {
     }
 
     return output.toString();
+  }
+
+  /**
+   * 计数
+   * @param command
+   * @return
+   */
+  public static int calcCount(FormatCommand command) {
+    CountStrategyEnum countStrategy = command.getCountStrategy();
+    return countStrategy.convert(command);
   }
 
   private static void splitFormatTest() {

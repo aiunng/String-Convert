@@ -1,6 +1,7 @@
 package com.aiunng.prj.entity;
 
 import com.aiunng.prj.constant.ConverCodeStrategyEnum;
+import com.aiunng.prj.constant.CountStrategyEnum;
 
 /**
  * @author：wangXinYu
@@ -29,9 +30,17 @@ public class FormatCommand {
    */
   private String close;
   /**
+   * 计数字符串
+   */
+  private String countStr;
+  /**
    * 编码转换策略
    */
   private ConverCodeStrategyEnum converCodeStrategy = ConverCodeStrategyEnum.NONE;
+  /**
+   * 计数策略
+   */
+  private CountStrategyEnum countStrategy = CountStrategyEnum.NONE;
 
   public String getInput() {
     return input;
@@ -79,5 +88,21 @@ public class FormatCommand {
 
   public void setConverCodeStrategy(ConverCodeStrategyEnum converCodeStrategy) {
     this.converCodeStrategy = converCodeStrategy;
+  }
+
+  public CountStrategyEnum getCountStrategy() {
+    return countStrategy;
+  }
+
+  public void setCountStrategy(CountStrategyEnum countStrategy) {
+    this.countStrategy = countStrategy;
+  }
+
+  public String getCountStr() {
+    return countStr;
+  }
+
+  public void setCountStr(String countStr) {
+    this.countStr = countStr;
   }
 }
