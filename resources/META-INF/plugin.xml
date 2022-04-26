@@ -32,7 +32,7 @@
         <li>然后，你可以根据文本的特点，通过'原字符'来分割文本。</li>
         <li>你也可以用'新字符'替换原来的分割符。</li>
         <li>可以通过'前缀'和'后缀'将分割后的文本元素进行开始和结束字符填充。</li>
-        <li>文本可以被编码和解码（支持url, base64, unicode)。</li>
+        <li>文本可以被编码和解码（支持url, base64, unicode, morse)。</li>
         <li>可以计算文本字符长度，以及指定字符串的个数。</li>
         <li>点击转换按钮'->'，展示处理结果。</li>
       </ul>
@@ -56,6 +56,7 @@
       <p><font size="5">2022.04.26</font></p>
       <ul>
         <li>[NEW]unicode encode,unicode decode</li>
+        <li>[NEW]morse encode,morse decode</li>
         <li>[NEW]string text length</li>
         <li>[NEW]Specify the number of strings</li>
       </ul>
