@@ -1,10 +1,10 @@
 package com.aiunng.prj.constant;
 
+import cn.hutool.core.util.StrUtil;
 import com.aiunng.prj.entity.FormatCommand;
 import com.intellij.openapi.util.text.StringUtil;
 import java.io.UnsupportedEncodingException;
 import java.util.Optional;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * 转换策略
@@ -36,7 +36,7 @@ public enum CountStrategyEnum {
     protected int doConvert(FormatCommand input) throws UnsupportedEncodingException {
       String inputStr = Optional.ofNullable(input).map(FormatCommand::getInput).orElse("");
       String countStr = Optional.ofNullable(input).map(FormatCommand::getCountStr).orElse("");
-      if (StringUtils.isBlank(inputStr) || StringUtils.isBlank(countStr)) {
+      if (StrUtil.isBlank(inputStr) || StrUtil.isBlank(countStr)) {
         return 0;
       }
       return countStr(inputStr, countStr);
