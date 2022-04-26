@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.aiunng.prj.idea.plugin.string.convert</id>
   <name>String-Convert</name>
-  <version>2021.10.23</version>
+  <version>2022.04.26</version>
   <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/hrgdyx">w*Yu</vendor>
 
   <description><![CDATA[
@@ -29,11 +29,12 @@
       </ul>
       <ul>
         <li>首先，在文本输入区，输入要处理的字符串。</li>
-        <li>然后，你可以根据文本的特点，通过'原分隔符'来分割文本。</li>
-        <li>你也可以用'新分隔符'替换原来的分割符。</li>
-        <li>可以通过'开始符号'和'结束符号'将分割后的文本元素进行开始和结束字符填充。</li>
-        <li>文本可以被编码和解码（支持url, base64)。</li>
-        <li>最后点击转换按钮'->'，展示处理结果。</li>
+        <li>然后，你可以根据文本的特点，通过'原字符'来分割文本。</li>
+        <li>你也可以用'新字符'替换原来的分割符。</li>
+        <li>可以通过'前缀'和'后缀'将分割后的文本元素进行开始和结束字符填充。</li>
+        <li>文本可以被编码和解码（支持url, base64, unicode)。</li>
+        <li>可以计算文本字符长度，以及指定字符串的个数。</li>
+        <li>点击转换按钮'->'，展示处理结果。</li>
       </ul>
       <p><font size="5">使用界面：</font></p>
       <img src="https://plugins.jetbrains.com/files/17857/screenshot_b959cda9-bbef-4348-866d-bd9cf86b88c3" width="360"/>
@@ -52,6 +53,12 @@
           <li>[NEW]url encode,url decode</li>
           <li>[NEW]base64 encode,base64 decode</li>
         </ul>
+      <p><font size="5">2022.04.26</font></p>
+      <ul>
+        <li>[NEW]unicode encode,unicode decode</li>
+        <li>[NEW]string text length</li>
+        <li>[NEW]Specify the number of strings</li>
+      </ul>
       <em></em>
     ]]>
   </change-notes>
