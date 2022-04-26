@@ -1,5 +1,6 @@
 package com.aiunng.prj.constant;
 
+import com.aiunng.prj.util.StringUnicodeUtil;
 import com.intellij.openapi.util.text.StringUtil;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -22,9 +23,7 @@ public enum ConverCodeStrategyEnum {
       return input;
     }
   },
-  /**
-   * url编码
-   */
+
   URL_ENCODE(201, "url编码") {
     @Override
     protected String doConvert(String input) throws UnsupportedEncodingException {
@@ -32,9 +31,6 @@ public enum ConverCodeStrategyEnum {
     }
   },
 
-  /**
-   * url解码
-   */
   URL_DECODE(202, "url解码") {
     @Override
     protected String doConvert(String input) throws UnsupportedEncodingException {
@@ -55,6 +51,21 @@ public enum ConverCodeStrategyEnum {
       return new String(Base64.getDecoder().decode(input));
     }
   },
+
+  UNICODE_ENCODE(401, "unicode编码") {
+    @Override
+    protected String doConvert(String input) {
+      return StringUnicodeUtil.string2Unicode(input);
+    }
+  },
+
+  UNICODE_DECODE(402, "unicode解码") {
+    @Override
+    protected String doConvert(String input) {
+      return StringUnicodeUtil.unicode2String(input);
+    }
+  },
+
   ;
 
   ConverCodeStrategyEnum(int code, String desc) {
