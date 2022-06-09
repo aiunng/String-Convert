@@ -95,7 +95,7 @@ public enum ConverCodeStrategyEnum {
   protected abstract String doConvert(String input) throws UnsupportedEncodingException;
 
   public String convert(String input) {
-    String output = input;
+    String output = input.trim();
     try {
       output = this.doConvert(input);
     } catch (Exception e) {
